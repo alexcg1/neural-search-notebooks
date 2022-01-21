@@ -1,10 +1,13 @@
+import warnings
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
 import finetuner
 import torchvision
 from docarray import DocumentArray
 import torch
 import os
 
-MAX_COUNT = 1000
+
+MAX_DOCS = 1000
 
 model = torchvision.models.resnet50(pretrained=True)
 
@@ -17,7 +20,7 @@ else:
 
 
 print("Loading docs")
-docs = DocumentArray.from_files("./data/images/*.jpg", size=MAX_COUNT, to_dataturi=True)
+docs = DocumentArray.from_files("./data/images/*.jpg", size=MAX_DOCS, to_dataturi=True)
 
 for doc in docs:
     doc.load_uri_to_image_blob(
