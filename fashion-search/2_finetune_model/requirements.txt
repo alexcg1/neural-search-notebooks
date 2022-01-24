@@ -1,0 +1,2 @@
+finetuner==0.3.0
+torchvision==0.11.2
